@@ -1,10 +1,9 @@
 <?php
-$conn = mysqli_connect('localhost','root','','user_db');
 // Database connection parameters
-$servername = "your_servername";
-$username = "your_username";
-$password = "your_password";
-$dbname = "your_database_name";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "user_db";
 
 // Create a connection to the database
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -23,17 +22,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $price = $_POST["price"];
     $contactNumber = $_POST["contactNumber"];
 
-    // Perform data validation if needed
+    // Prepare the SQL statement with placeholders
+    $stmt = $conn->prepare("INSERT INTO boarding_details (owner_name, boarding_address, gender, students_count, price, contact_number ) VALUES (?, ?, ?, ?, ?, ?)");
+    
+    //Bind parameters to the prepared statement
+    $stmt->bind_param("sssids", $ownerName, $boardingAddress, $gender, $studentsCount, $price, $contactNumber );
 
-    // Insert data into the database
-    $sql = "INSERT INTO boarding_details (owner_name, boarding_address, gender, students_count, price, contact_number)
-            VALUES ('$ownerName', '$boardingAddress', '$gender', $studentsCount, $price, '$contactNumber')";
-
-    if ($conn->query($sql) === TRUE) {
+    // Execute the prepared statement
+    if ($stmt->execute()) {
         echo "Boarding details inserted successfully!";
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $stmt->error;
     }
+
+    // Close the statement
+    $stmt->close();
 }
 
 // Close the database connection

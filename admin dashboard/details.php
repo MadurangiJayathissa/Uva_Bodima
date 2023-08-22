@@ -1,4 +1,11 @@
+<?php
+include "config.php";
 
+
+$query_show_emp= "select * from boarding_details ";
+$result_show_emp= mysqli_query($conn, $query_show_emp);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -245,53 +252,48 @@
                           <th>Girls or Boys</th>
                           <th>Number of Students</th>
                           <th>Price</th>
-                          <th>Boarding Pictures</th>
                           <th>Contact Number</th>
+                          <th>Boarding Pictures</th>
                           <th>Payment</th>
                           <th>Add</th>
                           <th>Update</th>
                           <th>Delete</th>
                         </tr>
-
-
                         <?php
-                        // Database connection parameters
-                        $servername = "your_servername";
-                        $username = "your_username";
-                        $password = "your_password";
-                        $dbname = "your_database_name";
 
-                        // Create a connection to the database
-                        $conn = new mysqli($servername, $username, $password, $dbname);
+                        while($row = mysqli_fetch_assoc($result_show_emp))
+                        {
+                        ?> 
+                        <td><?php echo $row['id']; ?></td>
+                        <td><?php echo $row['owner_name']; ?></td>
+                        <td><?php echo $row['boarding_address']; ?></td>
+                        <td><?php echo $row['gender']; ?></td>
+                        <td><?php echo $row['students_count']; ?></td>
+                        <td><?php echo $row['price']; ?></td>
+                        <td><?php echo $row['contact_number']; ?></td>
+                        <td><?php echo $row['boardingPictures']; ?></td>
+                        <td><?php echo $row['payment']; ?></td>
+                        <!-- ... Your existing HTML table code ... -->
+                        <td>
+                          <a href="update_form.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">
+                            Update
+                          </a>
+                        </td>
+                        <!-- ... Rest of your HTML table code ... -->
 
-                        // Check the connection
-                        if ($conn->connect_error) {
-                            die("Connection failed: " . $conn->connect_error);
+                        <td>
+                            <form method="post" action="delete_row.php">
+                              <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                              <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this row?')">
+                                Delete
+                              </button>
+                            </form>
+                        </td>
+                        </tr>
+                        <?php
+
                         }
 
-                        // Query to fetch data from the boarding_details table
-                        $sql = "SELECT * FROM boarding_details";
-                        $result = $conn->query($sql);
-
-                        if ($result->num_rows > 0) {
-                            // Output data of each row
-                            while ($row = $result->fetch_assoc()) {
-                                echo "<tr>";
-                                echo "<td>" . $row["id"] . "</td>";
-                                echo "<td>" . $row["owner_name"] . "</td>";
-                                echo "<td>" . $row["boarding_address"] . "</td>";
-                                echo "<td>" . $row["gender"] . "</td>";
-                                echo "<td>" . $row["students_count"] . "</td>";
-                                echo "<td>" . $row["price"] . "</td>";
-                                echo "<td>" . $row["contact_number"] . "</td>";
-                                echo "</tr>";
-                            }
-                        } else {
-                            echo "<tr><td colspan='7'>No data found</td></tr>";
-                        }
-
-                        // Close the database connection
-                        $conn->close();
                         ?>
                     </div>
                   </div>
