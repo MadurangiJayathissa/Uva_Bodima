@@ -82,7 +82,7 @@
 <body>
     <div class="container">
         <h1>Boarding Details Form</h1>
-        <form id="boarding-form" method="post" action="proces_form.php">
+        <form id="boarding-form" method="post" action="proces_form.php" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="owner-name">Owner Name:</label>
                 <input type="text" id="owner-name" name="ownerName" required>
@@ -113,7 +113,7 @@
             </div>
             <div class="form-group">
                 <label for="boarding-pictures">Boarding Pictures:</label>
-                <input type="file" id="boarding-pictures" name="product_image" >
+                <input type="file" id="boarding-pictures" name="boardingPictures" accept=".jpg, .jpeg, .png" >
             </div>
             <div class="form-group">
                 <label for="payment-photo">Payment Clip Photo:</label>

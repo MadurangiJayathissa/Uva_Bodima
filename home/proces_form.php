@@ -13,6 +13,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// ... Your previous code ...
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Retrieve form data
     $ownerName = $_POST["ownerName"];
@@ -22,23 +24,50 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $price = $_POST["price"];
     $contactNumber = $_POST["contactNumber"];
 
+    // Check if the file was uploaded successfully
+    if (isset($_FILES['boardingPictures']) && $_FILES['boardingPictures']['error'] === UPLOAD_ERR_OK) {
+        $boardingPictures = $_FILES['boardingPictures']['name'];
+        $boardingPictures_temp = $_FILES['boardingPictures']['tmp_name'];  // Temporary file path
+        $boardingPictures_folder = 'uploaded_img' . $boardingPictures;
+
+        // Move the uploaded file to the desired location
+        if (move_uploaded_file($boardingPictures_temp, $boardingPictures_folder)) {
+            echo "Boarding pictures uploaded and stored successfully!";
+        } else {
+            echo "Error uploading and storing boarding pictures.";
+        }
+    } else {
+        // Handle the case where the file upload failed
+        // You might want to display an error message to the user
+        $boardingPictures = null;
+        $boardingPictures_folder = null;
+    }
+
     // Prepare the SQL statement with placeholders
-    $stmt = $conn->prepare("INSERT INTO boarding_details (owner_name, boarding_address, gender, students_count, price, contact_number ) VALUES (?, ?, ?, ?, ?, ?)");
-    
-    //Bind parameters to the prepared statement
-    $stmt->bind_param("sssids", $ownerName, $boardingAddress, $gender, $studentsCount, $price, $contactNumber );
+    if ($boardingPictures === null) {
+        // Bind parameters to the prepared statement excluding the boardingPictures
+        $stmt = $conn->prepare("INSERT INTO boarding_details (owner_name, boarding_address, gender, students_count, price, contact_number) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssisd", $ownerName, $boardingAddress, $gender, $studentsCount, $price, $contactNumber);
+    } else {
+        // Bind parameters to the prepared statement with boardingPictures
+        $stmt = $conn->prepare("INSERT INTO boarding_details (owner_name, boarding_address, gender, students_count, price, contact_number, boardingPictures) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssisds", $ownerName, $boardingAddress, $gender, $studentsCount, $price, $contactNumber, $boardingPictures);
+    }
 
     // Execute the prepared statement
     if ($stmt->execute()) {
         echo "Boarding details inserted successfully!";
     } else {
-        echo "Error: " . $stmt->error;
+        // Check if the error is due to null value in boardingPictures column
+        if (strpos($stmt->error, "Column 'boardingPictures' cannot be null") !== false) {
+            echo "Error: Boarding pictures were not uploaded.";
+        } else {
+            echo "Error: " . $stmt->error;
+        }
     }
 
     // Close the statement
     $stmt->close();
 }
 
-// Close the database connection
-$conn->close();
 ?>
