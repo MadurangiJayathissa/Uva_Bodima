@@ -43,8 +43,8 @@
       <input type="hidden" name="id" value="<?php echo $boarding_details['id']; ?>">
       <label for="owner_name">Owner Name:</label>
       <input type="text" name="owner_name" value="<?php echo $boarding_details['owner_name']; ?>"><br>
-        <label for="boarding-address">Boarding Address:</label>
-        <input type="text" id="boarding-address" name="boardingAddress" value="<?php echo $boarding_details['boarding_address']; ?>"><br>
+        <label for="boarding_address">Boarding Address:</label>
+        <input type="text" id="boarding_address" name="boardingAddress" value="<?php echo $boarding_details['boarding_address']; ?>"><br>
         <label for="gender">Girls or Boys:</label>
         <select id="gender" name="gender" required>
             <option value="<?php echo $boarding_details['gender']; ?>">Select</option><br>

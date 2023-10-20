@@ -117,7 +117,7 @@
             </div>
             <div class="form-group">
                 <label for="payment-photo">Payment Clip Photo:</label>
-                <input type="file" id="payment-photo" name="paymentPhoto" accept=".jpg, .jpeg, .png">
+                <input type="file" id="payment-photo" name="payment" accept=".jpg, .jpeg, .png">
             </div>
             <div class="payment-details">
                 <p><b>Payment Details</b></p>

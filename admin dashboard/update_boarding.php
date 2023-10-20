@@ -1,13 +1,16 @@
-<!-- update_boarding.php -->
 <?php
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
   // Get the updated data from the form
   $id = $_POST["id"];
   $owner_name = $_POST["owner_name"];
-  // Add other fields (boarding_address, gender, students_count, price, contact_number, etc.)
+  $boarding_address = $_POST["boardingAddress"];
+  $gender = $_POST["gender"];
+  $students_count = $_POST["studentsCount"];
+  $price = $_POST["price"];
+  $contact_number = $_POST["contactNumber"];
 
-  // Perform database connection and update operation
+  // Database connection details
   $db_host = "localhost";
   $db_user = "root";
   $db_pass = "";
@@ -20,7 +23,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
   // Prepare the SQL query to update the boarding details
   $sql = "UPDATE boarding_details SET 
-              owner_name = '$owner_name'
+              owner_name = '$owner_name',
+              boarding_address = '$boarding_address',
+              gender = '$gender',
+              students_count = $students_count,
+              price = $price,
+              contact_number = '$contact_number'
           WHERE id = $id";
 
   // Execute the query

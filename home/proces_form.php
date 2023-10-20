@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_FILES['boardingPictures']) && $_FILES['boardingPictures']['error'] === UPLOAD_ERR_OK) {
         $boardingPictures = $_FILES['boardingPictures']['name'];
         $boardingPictures_temp = $_FILES['boardingPictures']['tmp_name'];  // Temporary file path
-        $boardingPictures_folder = 'uploaded_img' . $boardingPictures;
+        $boardingPictures_folder = 'uploaded_img/' . $boardingPictures;
 
         // Move the uploaded file to the desired location
         if (move_uploaded_file($boardingPictures_temp, $boardingPictures_folder)) {
@@ -53,6 +53,36 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt = $conn->prepare("INSERT INTO boarding_details (owner_name, boarding_address, gender, students_count, price, contact_number, boardingPictures) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("sssisds", $ownerName, $boardingAddress, $gender, $studentsCount, $price, $contactNumber, $boardingPictures);
     }
+
+        // Check if the file was uploaded successfully
+        if (isset($_FILES['payment']) && $_FILES['payment']['error'] === UPLOAD_ERR_OK) {
+            $payment = $_FILES['payment']['name'];
+            $payment_temp = $_FILES['payment']['tmp_name'];  // Temporary file path
+            $payment_folder = 'uploaded_img/' . $payment;
+    
+            // Move the uploaded file to the desired location
+            if (move_uploaded_file($payment_temp, $payment_folder)) {
+                echo "Payment pictures uploaded and stored successfully!";
+            } else {
+                echo "Error uploading and storing Payment pictures.";
+            }
+        } else {
+            // Handle the case where the file upload failed
+            // You might want to display an error message to the user
+            $payment = null;
+            $payment = null;
+        }
+    
+        // Prepare the SQL statement with placeholders
+        if ($payment === null) {
+            // Bind parameters to the prepared statement excluding the boardingPictures
+            $stmt = $conn->prepare("INSERT INTO boarding_details (owner_name, boarding_address, gender, students_count, price, contact_number) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssisd", $ownerName, $boardingAddress, $gender, $studentsCount, $price, $contactNumber);
+        } else {
+            // Bind parameters to the prepared statement with boardingPictures
+            $stmt = $conn->prepare("INSERT INTO boarding_details (owner_name, boarding_address, gender, students_count, price, contact_number, boardingPictures, payment) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssisdss", $ownerName, $boardingAddress, $gender, $studentsCount, $price, $contactNumber, $boardingPictures, $payment);
+        }
 
     // Execute the prepared statement
     if ($stmt->execute()) {

@@ -260,7 +260,8 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
                           <th>Delete</th>
                         </tr>
                         <?php
-
+                        $select_products = mysqli_query($conn, "SELECT * FROM `boarding_details`");
+                        if(mysqli_num_rows($select_products) > 0){
                         while($row = mysqli_fetch_assoc($result_show_emp))
                         {
                         ?> 
@@ -271,8 +272,16 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
                         <td><?php echo $row['students_count']; ?></td>
                         <td><?php echo $row['price']; ?></td>
                         <td><?php echo $row['contact_number']; ?></td>
-                        <td><?php echo $row['boardingPictures']; ?></td>
-                        <td><?php echo $row['payment']; ?></td>
+                        <td><img src="../home/uploaded_img/<?php echo $row['boardingPictures']; ?>" height="100" alt=""></td>
+                        <td><img src="../home/uploaded_img/<?php echo $row['payment']; ?>" height="100" alt=""></td>
+
+                        <td>
+                          <a href="" class="btn btn-primary btn-sm">
+                          Add
+                          </a>
+                        </td>
+
+
                         <!-- ... Your existing HTML table code ... -->
                         <td>
                           <a href="update_form.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">
@@ -291,8 +300,11 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
                         </td>
                         </tr>
                         <?php
-
-                        }
+                        
+                      };    
+                      }else{
+                         echo "<div class='empty'>no product added</div>";
+                      };
 
                         ?>
                     </div>
