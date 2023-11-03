@@ -1,3 +1,13 @@
+<?php
+include "config.php";
+
+
+$query_show_emp= "select * from save_table ";
+$result_show_emp= mysqli_query($conn, $query_show_emp);
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -286,27 +296,43 @@
                     
                 </div>
                 <div class="tab-content">
-                    <div id="tab-1" class="tab-pane fade show p-0 active">
-                        <div class="row g-4">
-                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="property-item rounded overflow-hidden">
-                                    <div class="position-relative overflow-hidden">
-                                        <a href=""><img class="img-fluid" src="img/home2.jpg" alt=""></a>
-                                        <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">Girls</div>
-                                    </div>
-                                    <div class="p-4 pb-0">
-                                        <h5 class="text-primary mb-3">$12,345</h5>
-                                        <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
-                                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</p>
-                                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</p>
-                                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     
+                    <div class="container">
+    <?php
+    $select_products = mysqli_query($conn, "SELECT * FROM `save_table`");
+    $cardCount = 0;
+
+    if (mysqli_num_rows($select_products) > 0) {
+        echo '<div class="row">'; // Start the first row
+        while ($row = mysqli_fetch_assoc($select_products)) {
+            if ($cardCount % 4 == 0 && $cardCount > 0) {
+                // Start a new row for every 4 cards
+                echo '</div><div class="row">';
+            }
+
+            echo '<div class="col-md-3">'; // Create a column for each card
+            echo '<div class="property-item rounded overflow-hidden">';
+            echo '<div class="position-relative overflow-hidden">';
+            echo '<img class="img-fluid" src="../home/uploaded_img/' . $row['boardingPictures'] . '" height="50" alt="">';
+            echo '<div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">' . $row['gender'] . '</div>';
+            echo '</div>';
+            echo '<div class="p-4 pb-0">';
+            echo '<h5 class="text-primary mb-3">' . $row['price'] . '</h5>';
+            echo '<a class="d-block h5 mb-2" href="">' . $row['owner_name'] . '</a>';
+            echo '<p><i class="fa fa-map-marker-alt text-primary me-2"></i>' . $row['boarding_address'] . '</p>';
+            echo '<p><i class="fas fa-users text-primary me-2"></i>' . $row['students_count'] . '</p>';
+            echo '<p><i class="fas fa-phone text-primary me-2"></i>' . $row['contact_number'] . '</p>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+            $cardCount++;
+        }
+        echo '</div>'; // Close the last row
+    } else {
+        echo "<div class='empty'>no product added</div>";
+    }
+    ?>
+</div>
 
                             <div class="col-12 text-center">
                                 <a class="btn btn-primary py-3 px-5" href="">Browse More Property</a>

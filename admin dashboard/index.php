@@ -196,20 +196,9 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
           <ul class="sidebar-menu">
             <li class="dropdown active">
               <a href="index.php" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="briefcase"></i><span>House Type</span></a>
-                  <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="widget-chart.php">Single rooms</a></li>
-                    <li><a class="nav-link" href="widget-data.php">Double rooms</a></li>
-                  </ul>
-                  <a href="details.php" class="nav-link"><i data-feather="monitor"></i><span>Boarding Details</span></a>
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="mail"></i><span>Email</span></a>
-                  <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="email-inbox.php">Inbox</a></li>
-                    <li><a class="nav-link" href="email-compose.php">Compose</a></li>
-                    <li><a class="nav-link" href="email-read.php">read</a></li>
-                  </ul>      
+              <a href="details.php" class="nav-link"><i data-feather="monitor"></i><span>Boarding Details</span></a>     
               <a href="owners.php" class="menu-toggle nav-link has-dropdown"><i data-feather="copy"></i><span>Owners</span></a>        
-              <a href="payments.php" class="menu-toggle nav-link has-dropdown"><i data-feather="shopping-bag"></i><span>Payments</span></a> 
+              <a href="payments.php" class="nav-link"><i data-feather="shopping-bag"></i><span>Payments</span></a> 
               <a href="blank.php"    class="menu-toggle nav-link has-dropdown"><i data-feather="file"></i><span>Reports</span></a>
               <a href="reports.php" class="menu-toggle nav-link has-dropdown"><i data-feather="layout"></i><span>Reports</span></a>
               <a href="users.php" class="menu-toggle nav-link has-dropdown"><i data-feather="grid"></i><span>Users</span></a>

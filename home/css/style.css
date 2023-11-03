@@ -261,6 +261,8 @@ body{
 }
 
 .property-item img {
+    width: 50px;
+    height: 50px;
     transition: .5s;
 }
 

@@ -2,7 +2,7 @@
 include "config.php";
 
 
-$query_show_emp= "select * from boarding_details ";
+$query_show_emp= "select * from save_table ";
 $result_show_emp= mysqli_query($conn, $query_show_emp);
 
 ?>
@@ -228,7 +228,7 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Boarding Details</h4>
+                    <h4>Paymented Boarding Details</h4>
                     <div class="card-header-form">
                       <form>
                         <div class="input-group">
@@ -254,13 +254,10 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
                           <th>Price</th>
                           <th>Contact Number</th>
                           <th>Boarding Pictures</th>
-                          <th>Payment</th>
-                          <th>Add</th>
-                          <th>Update</th>
                           <th>Delete</th>
                         </tr>
                         <?php
-                        $select_products = mysqli_query($conn, "SELECT * FROM `boarding_details`");
+                        $select_products = mysqli_query($conn, "SELECT * FROM `save_table`");
                         if(mysqli_num_rows($select_products) > 0){
                         while($row = mysqli_fetch_assoc($result_show_emp))
                         {
@@ -273,21 +270,6 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
                         <td><?php echo $row['price']; ?></td>
                         <td><?php echo $row['contact_number']; ?></td>
                         <td><img src="../home/uploaded_img/<?php echo $row['boardingPictures']; ?>" height="100" alt=""></td>
-                        <td><img src="../home/uploaded_img/<?php echo $row['payment']; ?>" height="100" alt=""></td>
-
-                        <td>
-                        <a href='save_data.php?id=<?php echo $row['id']; ?>' class='btn btn-primary btn-sm'>Add</a>
-
-                        </td>
-
-
-                        <!-- ... Your existing HTML table code ... -->
-                        <td>
-                          <a href="update_form.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">
-                            Update
-                          </a>
-                        </td>
-                        <!-- ... Rest of your HTML table code ... -->
 
                         <td>
                             <form method="post" action="delete_row.php">
