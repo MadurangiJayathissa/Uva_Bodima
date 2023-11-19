@@ -1,6 +1,6 @@
 # Welcome to Uva Bodima.lk
 <p align="center" >
-<img style="background-color: #fff; border-radius: 50%;" src="https://github.com/LashenDEV/teamup/blob/main/public/assets/images/logos/teamup%20logo.png" width="30%" height="30%">
+<img style="background-color: #fff; border-radius: 50%;" src="https://github.com/MadurangiJayathissa/Uva_Bodima/blob/main/home/img/logo.png" width="30%" height="30%">
 </p>
 
 
