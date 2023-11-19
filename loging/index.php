@@ -1,35 +1,3 @@
-<?php
-
-@include 'config.php';
-
-if(isset($_POST['submit'])){
-
-  $name = mysqli_real_escape_string($conn, $_POST['name']); 
-  $email = mysqli_real_escape_string($conn, $_POST['email']);
-  $pass = md5($_POST['password']); 
-  $cpass = md5($_POST['cpassword']);
-
-  $select = "SELECT * FROM user_form WHERE email = '$email' && password = '$pass'";
-
-  $result = mysqli_query($conn, $select);
-
-  if(mysqli_num_rows($result) > 0){
-    $error[] = 'User already exists!';
-  }else{
-
-    if($pass != $cpass){
-      $error[] = 'Passwords do not match!'; 
-    }else{
-      $insert = "INSERT INTO user_form(name, email, password) VALUES('$name','$email','$pass')";
-      mysqli_query($conn, $insert);
-      header('location:index.php');
-      exit();
-    }
-  }
-
-}
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,21 +9,17 @@ if(isset($_POST['submit'])){
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="style.css" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>Sign in & Sign up Form</title>
+    <!-- Favicon -->
+    <link href="img/icon-deal.png" rel="icon">
   </head>
   <body>
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form method="POST" class="sign-in-form" action="../home/index.php" enctype="multipart/form-data">
+          <form method="POST" class="sign-in-form" action="login.php" >
             <h2 class="title">Sign in</h2>
-            <?php
-            if(isset($error)){
-              foreach($error as $error){
-                echo'<span class="error-msg">'.$error.'</span>';
-              };
-            };
-            ?>
             <div class="input-field">
               <i class="fas fa-user"></i>
               <input type="text" name="name"  placeholder="Username" />
@@ -81,15 +45,8 @@ if(isset($_POST['submit'])){
               </a>
             </div>
           </form>
-          <form method="POST" class="sign-up-form">
+          <form method="POST" class="sign-up-form" action="register.php">
             <h2 class="title">Sign up</h2>
-            <?php
-            if(isset($error)){
-              foreach($error as $error){
-                echo'<span class="error-msg">'.$error.'</span>';
-              };
-            };
-            ?>
             <div class="input-field">
               <i class="fas fa-user"></i>
               <input type="text" name="name" placeholder="Username" />

@@ -1,11 +1,4 @@
-<?php
-include "config.php";
 
-
-$query_show_emp= "select * from save_table ";
-$result_show_emp= mysqli_query($conn, $query_show_emp);
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,7 +44,6 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
           </ul>
         </div>
         <ul class="navbar-nav navbar-right">
-          </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown"
               class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image" src="assets/img/user.png"
                 class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
@@ -60,6 +52,11 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
               <a href="profile.php" class="dropdown-item has-icon"> <i class="far
 										fa-user"></i> Profile
               </a> 
+              <div class="dropdown-divider"></div>
+              <a href="auth-login.php" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
+                Logout
+              </a>
+            </div>
           </li>
         </ul>
       </nav>
@@ -96,7 +93,7 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Paymented Boarding Details</h4>
+                    <h4>Message</h4>
                     <div class="card-header-form">
                       <form>
                         <div class="input-group">
@@ -110,58 +107,57 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
                   </div>
                   <div class="card-body p-0">
                     <div class="table-responsive">
-                      <table class="table table-striped">
-                        <tr>
-                          <th class="text-center">
-                            
-                          </th>
-                          <th>Owner Name</th>
-                          <th>Boarding Address</th>
-                          <th>Girls or Boys</th>
-                          <th>Boarding Type</th>
-                          <th>Bathroom_Types</th>
-                          <th>Number of Students</th>
-                          <th>Price</th>
-                          <th>Key Money</th>
-                          <th>Contact Number</th>
-                          <th>Boarding Pictures</th>
-                          <th>Delete</th>
-                        </tr>
-                        <?php
-                        $select_products = mysqli_query($conn, "SELECT * FROM `save_table`");
-                        if(mysqli_num_rows($select_products) > 0){
-                        while($row = mysqli_fetch_assoc($result_show_emp))
-                        {
-                        ?> 
-                        <td><?php echo $row['id']; ?></td>
-                        <td><?php echo $row['owner_name']; ?></td>
-                        <td><?php echo $row['boarding_address']; ?></td>
-                        <td><?php echo $row['gender']; ?></td>
-                        <td><?php echo $row['home_types']; ?></td>
-                        <td><?php echo $row['bathroom_types']; ?></td>
-                        <td><?php echo $row['students_count']; ?></td>
-                        <td><?php echo $row['price']; ?></td>
-                        <td><?php echo $row['k_price']; ?></td>
-                        <td><?php echo $row['contact_number']; ?></td>
-                        <td><img src="../home/uploaded_img/<?php echo $row['boardingPictures']; ?>" height="100" alt=""></td>
+                    <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Message</th>
+                      <th>Created At</th>
+                    </tr>
+                  </thead>
+                  <tbody>
 
-                        <td>
-                            <form method="post" action="delete_row.php">
-                              <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                              <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this row?')">
-                                Delete
-                              </button>
-                            </form>
-                        </td>
-                        </tr>
-                        <?php
+                    <?php
+                    // Establish database connection (replace these variables with your actual database credentials)
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "";
+                    $dbname = "user_db";
+
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+
+                    // Check connection
+                    if ($conn->connect_error) {
+                      die("Connection failed: " . $conn->connect_error);
+                    }
+
+                    // Retrieve contact form submission data from the database
+                    $sql = "SELECT * FROM contact_us";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                      while ($row = $result->fetch_assoc()) {
+                        echo "<tr>
+                                <td>{$row['id']}</td>
+                                <td>{$row['name']}</td>
+                                <td>{$row['email']}</td>
+                                <td>{$row['message']}</td>
+                                <td>{$row['created_at']}</td>
+                              </tr>";
+                      }
+                    } else {
+                      echo "<tr><td colspan='5'>No contact form submissions found</td></tr>";
+                    }
+
+                    // Close the database connection
+                    $conn->close();
+                    ?>
+
+                  </tbody>
+                </table>
                         
-                      };    
-                      }else{
-                         echo "<div class='empty'>no product added</div>";
-                      };
-
-                        ?>
                     </div>
                   </div>
                 </div>
@@ -295,7 +291,3 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
     </body>
 </html>
         
-
-
-
-

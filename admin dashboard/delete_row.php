@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // Prepare the SQL query to delete the row
-    $sql = "DELETE FROM boarding_details WHERE id = $id";
+    $sql = "DELETE FROM save_table WHERE id = $id";
 
     // Execute the query
     if (mysqli_query($conn, $sql)) {

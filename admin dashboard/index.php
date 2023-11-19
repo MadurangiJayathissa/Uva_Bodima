@@ -2,9 +2,47 @@
 include "config.php";
 
 
-$query_show_emp= "select * from boarding_details ";
+$query_show_emp= "select * from users ";
 $result_show_emp= mysqli_query($conn, $query_show_emp);
+$sql = "SELECT COUNT(id) AS customer_count FROM users";
+$result = $conn->query($sql);
 
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $customerCount = $row["customer_count"];
+} else {
+    $customerCount = 0;
+}
+
+$sql = "SELECT COUNT(id) AS boarding_count FROM save_table";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $boardingCount = $row["boarding_count"];
+} else {
+    $boardingCount = 0;
+}
+
+$sql = "SELECT COUNT(id) AS message_count FROM contact_us";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $messageCount = $row["message_count"];
+} else {
+    $messageCount = 0;
+}
+
+$sql = "SELECT COUNT(id) AS earn_count FROM save_table";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $earnCount = $row["earn_count"];
+} else {
+    $earnCount = 0;
+}
 ?>
 
 
@@ -25,7 +63,7 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
   <link rel="stylesheet" href="assets/css/components.css">
   <!-- Custom style CSS -->
   <link rel="stylesheet" href="assets/css/custom.css">
-  <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico' />
+  <link rel='shortcut icon' type='image/x-icon' href='assets/img/logo.png' />
 </head>
 
 <body>
@@ -54,132 +92,14 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
           </ul>
         </div>
         <ul class="navbar-nav navbar-right">
-          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
-              class="nav-link nav-link-lg message-toggle"><i data-feather="mail"></i>
-              <span class="badge headerBadge1">
-                6 </span> </a>
-            <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
-              <div class="dropdown-header">
-                Messages
-                <div class="float-right">
-                  <a href="#">Mark All As Read</a>
-                </div>
-              </div>
-              <div class="dropdown-list-content dropdown-list-message">
-                <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar
-											text-white"> <img alt="image" src="assets/img/users/user-1.png" class="rounded-circle">
-                  </span> <span class="dropdown-item-desc"> <span class="message-user">John
-                      Deo</span>
-                    <span class="time messege-text">Please check your mail !!</span>
-                    <span class="time">2 Min Ago</span>
-                  </span>
-                </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-2.png" class="rounded-circle">
-                  </span> <span class="dropdown-item-desc"> <span class="message-user">Sarah
-                      Smith</span> <span class="time messege-text">Request for leave
-                      application</span>
-                    <span class="time">5 Min Ago</span>
-                  </span>
-                </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-5.png" class="rounded-circle">
-                  </span> <span class="dropdown-item-desc"> <span class="message-user">Jacob
-                      Ryan</span> <span class="time messege-text">Your payment invoice is
-                      generated.</span> <span class="time">12 Min Ago</span>
-                  </span>
-                </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-4.png" class="rounded-circle">
-                  </span> <span class="dropdown-item-desc"> <span class="message-user">Lina
-                      Smith</span> <span class="time messege-text">hii John, I have upload
-                      doc
-                      related to task.</span> <span class="time">30
-                      Min Ago</span>
-                  </span>
-                </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-3.png" class="rounded-circle">
-                  </span> <span class="dropdown-item-desc"> <span class="message-user">Jalpa
-                      Joshi</span> <span class="time messege-text">Please do as specify.
-                      Let me
-                      know if you have any query.</span> <span class="time">1
-                      Days Ago</span>
-                  </span>
-                </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-2.png" class="rounded-circle">
-                  </span> <span class="dropdown-item-desc"> <span class="message-user">Sarah
-                      Smith</span> <span class="time messege-text">Client Requirements</span>
-                    <span class="time">2 Days Ago</span>
-                  </span>
-                </a>
-              </div>
-              <div class="dropdown-footer text-center">
-                <a href="#">View All <i class="fas fa-chevron-right"></i></a>
-              </div>
-            </div>
-          </li>
-          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
-              class="nav-link notification-toggle nav-link-lg"><i data-feather="bell" class="bell"></i>
-            </a>
-            <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
-              <div class="dropdown-header">
-                Notifications
-                <div class="float-right">
-                  <a href="#">Mark All As Read</a>
-                </div>
-              </div>
-              <div class="dropdown-list-content dropdown-list-icons">
-                <a href="#" class="dropdown-item dropdown-item-unread"> <span
-                    class="dropdown-item-icon bg-primary text-white"> <i class="fas
-												fa-code"></i>
-                  </span> <span class="dropdown-item-desc"> Template update is
-                    available now! <span class="time">2 Min
-                      Ago</span>
-                  </span>
-                </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-info text-white"> <i class="far
-												fa-user"></i>
-                  </span> <span class="dropdown-item-desc"> <b>You</b> and <b>Dedik
-                      Sugiharto</b> are now friends <span class="time">10 Hours
-                      Ago</span>
-                  </span>
-                </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-success text-white"> <i
-                      class="fas
-												fa-check"></i>
-                  </span> <span class="dropdown-item-desc"> <b>Kusnaedi</b> has
-                    moved task <b>Fix bug header</b> to <b>Done</b> <span class="time">12
-                      Hours
-                      Ago</span>
-                  </span>
-                </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-danger text-white"> <i
-                      class="fas fa-exclamation-triangle"></i>
-                  </span> <span class="dropdown-item-desc"> Low disk space. Let's
-                    clean it! <span class="time">17 Hours Ago</span>
-                  </span>
-                </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-info text-white"> <i class="fas
-												fa-bell"></i>
-                  </span> <span class="dropdown-item-desc"> Welcome to Otika
-                    template! <span class="time">Yesterday</span>
-                  </span>
-                </a>
-              </div>
-              <div class="dropdown-footer text-center">
-                <a href="#">View All <i class="fas fa-chevron-right"></i></a>
-              </div>
-            </div>
-          </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown"
               class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image" src="assets/img/user.png"
                 class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
-              <div class="dropdown-title">Hello Sarah Smith</div>
+              <div class="dropdown-title">Hello Admin</div>
               <a href="profile.php" class="dropdown-item has-icon"> <i class="far
 										fa-user"></i> Profile
-              </a> <a href="timeline.php" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
-                Activities
-              </a> <a href="#" class="dropdown-item has-icon"> <i class="fas fa-cog"></i>
-                Settings
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="auth-login.php" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
-                Logout
-              </a>
+              </a> 
             </div>
           </li>
         </ul>
@@ -196,12 +116,10 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
           <ul class="sidebar-menu">
             <li class="dropdown active">
               <a href="index.php" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
-              <a href="details.php" class="nav-link"><i data-feather="monitor"></i><span>Boarding Details</span></a>     
-              <a href="owners.php" class="menu-toggle nav-link has-dropdown"><i data-feather="copy"></i><span>Owners</span></a>        
-              <a href="payments.php" class="nav-link"><i data-feather="shopping-bag"></i><span>Payments</span></a> 
-              <a href="blank.php"    class="menu-toggle nav-link has-dropdown"><i data-feather="file"></i><span>Reports</span></a>
-              <a href="reports.php" class="menu-toggle nav-link has-dropdown"><i data-feather="layout"></i><span>Reports</span></a>
-              <a href="users.php" class="menu-toggle nav-link has-dropdown"><i data-feather="grid"></i><span>Users</span></a>
+              <a href="details.php" class="nav-link"><i data-feather="info"></i><span>Boarding Details</span></a>       
+              <a href="payments.php" class="nav-link"><i data-feather="dollar-sign"></i><span>Payments</span></a> 
+              <a href="message.php" class="nav-link"><i data-feather="message-circle"></i><span>Message</span></a>
+              <a href="user.php" class="nav-link"><i data-feather="users"></i><span>Users</span></a>
               
               </li>
               </ul>
@@ -221,18 +139,14 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
                 <div class="col-xl-3 col-lg-6">
                   <div class="card l-bg-green">
                     <div class="card-statistic-3">
-                      <div class="card-icon card-icon-large"><i class="fa fa-award"></i></div>
+                      <div class="card-icon card-icon-large"><i class="fa fa-users"></i></div>
                       <div class="card-content">
                         <h4 class="card-title">Customers</h4>
-                        <span>524</span>
+                        <span><?php echo $customerCount; ?></span>
                         <div class="progress mt-1 mb-1" data-height="8">
                           <div class="progress-bar l-bg-purple" role="progressbar" data-width="25%" aria-valuenow="25"
                             aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <p class="mb-0 text-sm">
-                          <span class="mr-2"><i class="fa fa-arrow-up"></i> 10%</span>
-                          <span class="text-nowrap">Since last month</span>
-                        </p>
                       </div>
                     </div>
                   </div>
@@ -240,18 +154,14 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
                 <div class="col-xl-3 col-lg-6">
                   <div class="card l-bg-cyan">
                     <div class="card-statistic-3">
-                      <div class="card-icon card-icon-large"><i class="fa fa-briefcase"></i></div>
+                      <div class="card-icon card-icon-large"><i class="fa fa-home"></i></div>
                       <div class="card-content">
-                        <h4 class="card-title">New Booking</h4>
-                        <span>1,258</span>
+                        <h4 class="card-title">Boarding Adds</h4>
+                        <span><?php echo $boardingCount; ?></span>
                         <div class="progress mt-1 mb-1" data-height="8">
-                          <div class="progress-bar l-bg-orange" role="progressbar" data-width="25%" aria-valuenow="25"
+                          <div class="progress-bar l-bg-orange" role="progressbar" data-width="30%" aria-valuenow="25"
                             aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <p class="mb-0 text-sm">
-                          <span class="mr-2"><i class="fa fa-arrow-up"></i> 10%</span>
-                          <span class="text-nowrap">Since last month</span>
-                        </p>
                       </div>
                     </div>
                   </div>
@@ -259,18 +169,14 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
                 <div class="col-xl-3 col-lg-6">
                   <div class="card l-bg-purple">
                     <div class="card-statistic-3">
-                      <div class="card-icon card-icon-large"><i class="fa fa-globe"></i></div>
+                      <div class="card-icon card-icon-large"><i class="fa fa-envelope"></i></div>
                       <div class="card-content">
-                        <h4 class="card-title">Owners</h4>
-                        <span>225</span>
+                        <h4 class="card-title">Message</h4>
+                        <span><?php echo $messageCount; ?></span>
                         <div class="progress mt-1 mb-1" data-height="8">
                           <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%" aria-valuenow="25"
                             aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <p class="mb-0 text-sm">
-                          <span class="mr-2"><i class="fa fa-arrow-up"></i> 10%</span>
-                          <span class="text-nowrap">Since last month</span>
-                        </p>
                       </div>
                     </div>
                   </div>
@@ -281,15 +187,11 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
                       <div class="card-icon card-icon-large"><i class="fa fa-money-bill-alt"></i></div>
                       <div class="card-content">
                         <h4 class="card-title">Earning</h4>
-                        <span>$2,658</span>
+                        <span>Rs. <?php echo $earnCount*200; ?></span>
                         <div class="progress mt-1 mb-1" data-height="8">
                           <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25"
                             aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <p class="mb-0 text-sm">
-                          <span class="mr-2"><i class="fa fa-arrow-up"></i> 10%</span>
-                          <span class="text-nowrap">Since last month</span>
-                        </p>
                       </div>
                     </div>
                   </div>
@@ -326,26 +228,8 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
                           <div class="list-inline text-center">
                             <div class="list-inline-item p-r-30"><i data-feather="arrow-up-circle"
                                 class="col-green"></i>
-                              <h5 class="m-b-0">$675</h5>
-                              <p class="text-muted font-14 m-b-0">Weekly Earnings</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                          <div class="list-inline text-center">
-                            <div class="list-inline-item p-r-30"><i data-feather="arrow-down-circle"
-                                class="col-orange"></i>
-                              <h5 class="m-b-0">$1,587</h5>
-                              <p class="text-muted font-14 m-b-0">Monthly Earnings</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                          <div class="list-inline text-center">
-                            <div class="list-inline-item p-r-30"><i data-feather="arrow-up-circle"
-                                class="col-green"></i>
-                              <h5 class="mb-0 m-b-0">$45,965</h5>
-                              <p class="text-muted font-14 m-b-0">Yearly Earnings</p>
+                              <h5 class="mb-0 m-b-0">Rs. <?php echo $earnCount*200; ?></h5>
+                              <p class="text-muted font-14 m-b-0">Full Earnings</p>
                             </div>
                           </div>
                         </div>
@@ -355,28 +239,15 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
                       <div class="row mt-5">
                         <div class="col-7 col-xl-7 mb-3">Total customers</div>
                         <div class="col-5 col-xl-5 mb-3">
-                          <span class="text-big">8,257</span>
-                          <sup class="col-green">+09%</sup>
+                          <span class="text-big"><?php echo $customerCount; ?></span>
                         </div>
                         <div class="col-7 col-xl-7 mb-3">Total Income</div>
                         <div class="col-5 col-xl-5 mb-3">
-                          <span class="text-big">$9,857</span>
-                          <sup class="text-danger">-18%</sup>
+                          <span class="text-big">Rs. <?php echo $earnCount*200; ?></span>
                         </div>
                         <div class="col-7 col-xl-7 mb-3">Booking completed</div>
                         <div class="col-5 col-xl-5 mb-3">
-                          <span class="text-big">28</span>
-                          <sup class="col-green">+16%</sup>
-                        </div>
-                        <div class="col-7 col-xl-7 mb-3">Total expense</div>
-                        <div class="col-5 col-xl-5 mb-3">
-                          <span class="text-big">$6,287</span>
-                          <sup class="col-green">+09%</sup>
-                        </div>
-                        <div class="col-7 col-xl-7 mb-3">New Customers</div>
-                        <div class="col-5 col-xl-5 mb-3">
-                          <span class="text-big">684</span>
-                          <sup class="col-green">+22%</sup>
+                          <span class="text-big"><?php echo $boardingCount; ?></span>
                         </div>
                       </div>
                     </div>
@@ -387,375 +258,7 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
           </div>
             <!-- end revenue chart -->
 
-            <!-- start assign table -->
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-                  <h4>Assign Task Table (Team Members)</h4>
-                  <div class="card-header-form">
-                    <form>
-                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <div class="input-group-btn">
-                          <button class="btn btn-primary"><i class="fas fa-search"></i></button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-                <div class="card-body p-0">
-                  <div class="table-responsive">
-                    <table class="table table-striped">
-                      <tr>
-                        <th class="text-center">
-                          <div class="custom-checkbox custom-checkbox-table custom-control">
-                            <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad"
-                              class="custom-control-input" id="checkbox-all">
-                            <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
-                          </div>
-                        </th>
-                        <th>Task Name</th>
-                        <th>Team Members</th>
-                        <th>Task Status</th>
-                        <th>Assign Date</th>
-                        <th>Due Date</th>
-                        <th>Priority</th>
-                        <th>Action</th>
-                      </tr>
-                      <tr>
-                        <td class="p-0 text-center">
-                          <div class="custom-checkbox custom-control">
-                            <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
-                              id="checkbox-1">
-                            <label for="checkbox-1" class="custom-control-label">&nbsp;</label>
-                          </div>
-                        </td>
-                        <td>Checking the bookings</td>
-                        <td class="text-truncate">
-                          <ul class="list-unstyled order-list m-b-0 m-b-0">
-                            <li class="team-member team-member-sm"><img class="rounded-circle"
-                                src="assets/img/users/user-8.png" alt="user" data-toggle="tooltip" title=""
-                                data-original-title="Wildan Ahdian"></li>
-                            <li class="team-member team-member-sm"><img class="rounded-circle"
-                                src="assets/img/users/user-9.png" alt="user" data-toggle="tooltip" title=""
-                                data-original-title="John Deo"></li>
-                            <li class="team-member team-member-sm"><img class="rounded-circle"
-                                src="assets/img/users/user-10.png" alt="user" data-toggle="tooltip" title=""
-                                data-original-title="Sarah Smith"></li>
-                            <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
-                          </ul>
-                        </td>
-                        <td class="align-middle">
-                          <div class="progress-text">50%</div>
-                          <div class="progress" data-height="6">
-                            <div class="progress-bar bg-success" data-width="50%"></div>
-                          </div>
-                        </td>
-                        <td>2018-01-20</td>
-                        <td>2019-05-28</td>
-                        <td>
-                          <div class="badge badge-success">Low</div>
-                        </td>
-                        <td><a href="#" class="btn btn-outline-primary">Detail</a></td>
-                      </tr>
-                      <tr>
-                        <td class="p-0 text-center">
-                          <div class="custom-checkbox custom-control">
-                            <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
-                              id="checkbox-2">
-                            <label for="checkbox-2" class="custom-control-label">&nbsp;</label>
-                          </div>
-                        </td>
-                        <td>Create a report of bookings</td>
-                        <td class="text-truncate">
-                          <ul class="list-unstyled order-list m-b-0 m-b-0">
-                            <li class="team-member team-member-sm"><img class="rounded-circle"
-                                src="assets/img/users/user-1.png" alt="user" data-toggle="tooltip" title=""
-                                data-original-title="Wildan Ahdian"></li>
-                            <li class="team-member team-member-sm"><img class="rounded-circle"
-                                src="assets/img/users/user-2.png" alt="user" data-toggle="tooltip" title=""
-                                data-original-title="John Deo"></li>
-                            <li class="avatar avatar-sm"><span class="badge badge-primary">+2</span></li>
-                          </ul>
-                        </td>
-                        <td class="align-middle">
-                          <div class="progress-text">40%</div>
-                          <div class="progress" data-height="6">
-                            <div class="progress-bar bg-danger" data-width="40%"></div>
-                          </div>
-                        </td>
-                        <td>2017-07-14</td>
-                        <td>2018-07-21</td>
-                        <td>
-                          <div class="badge badge-danger">High</div>
-                        </td>
-                        <td><a href="#" class="btn btn-outline-primary">Detail</a></td>
-                      </tr>
-                      <tr>
-                        <td class="p-0 text-center">
-                          <div class="custom-checkbox custom-control">
-                            <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
-                              id="checkbox-3">
-                            <label for="checkbox-3" class="custom-control-label">&nbsp;</label>
-                          </div>
-                        </td>
-                        <td>Cheking the customer payments</td>
-                        <td class="text-truncate">
-                          <ul class="list-unstyled order-list m-b-0 m-b-0">
-                            <li class="team-member team-member-sm"><img class="rounded-circle"
-                                src="assets/img/users/user-3.png" alt="user" data-toggle="tooltip" title=""
-                                data-original-title="Wildan Ahdian"></li>
-                            <li class="team-member team-member-sm"><img class="rounded-circle"
-                                src="assets/img/users/user-4.png" alt="user" data-toggle="tooltip" title=""
-                                data-original-title="John Deo"></li>
-                            <li class="team-member team-member-sm"><img class="rounded-circle"
-                                src="assets/img/users/user-5.png" alt="user" data-toggle="tooltip" title=""
-                                data-original-title="Sarah Smith"></li>
-                            <li class="avatar avatar-sm"><span class="badge badge-primary">+3</span></li>
-                          </ul>
-                        </td>
-                        <td class="align-middle">
-                          <div class="progress-text">55%</div>
-                          <div class="progress" data-height="6">
-                            <div class="progress-bar bg-purple" data-width="55%"></div>
-                          </div>
-                        </td>
-                        <td>2019-07-25</td>
-                        <td>2019-08-17</td>
-                        <td>
-                          <div class="badge badge-info">Average</div>
-                        </td>
-                        <td><a href="#" class="btn btn-outline-primary">Detail</a></td>
-                      </tr>
-                      <tr>
-                        <td class="p-0 text-center">
-                          <div class="custom-checkbox custom-control">
-                            <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
-                              id="checkbox-4">
-                            <label for="checkbox-4" class="custom-control-label">&nbsp;</label>
-                          </div>
-                        </td>
-                        <td>Contact the owners and customers</td>
-                        <td class="text-truncate">
-                          <ul class="list-unstyled order-list m-b-0 m-b-0">
-                            <li class="team-member team-member-sm"><img class="rounded-circle"
-                                src="assets/img/users/user-7.png" alt="user" data-toggle="tooltip" title=""
-                                data-original-title="John Deo"></li>
-                            <li class="team-member team-member-sm"><img class="rounded-circle"
-                                src="assets/img/users/user-8.png" alt="user" data-toggle="tooltip" title=""
-                                data-original-title="Sarah Smith"></li>
-                            <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
-                          </ul>
-                        </td>
-                        <td class="align-middle">
-                          <div class="progress-text">70%</div>
-                          <div class="progress" data-height="6">
-                            <div class="progress-bar" data-width="70%"></div>
-                          </div>
-                        </td>
-                        <td>2018-04-15</td>
-                        <td>2019-07-19</td>
-                        <td>
-                          <div class="badge badge-success">Low</div>
-                        </td>
-                        <td><a href="#" class="btn btn-outline-primary">Detail</a></td>
-                      </tr>
-                      <tr>
-                        <td class="p-0 text-center">
-                          <div class="custom-checkbox custom-control">
-                            <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
-                              id="checkbox-5">
-                            <label for="checkbox-5" class="custom-control-label">&nbsp;</label>
-                          </div>
-                        </td>
-                        <td>Mobile app Design</td>
-                        <td class="text-truncate">
-                          <ul class="list-unstyled order-list m-b-0 m-b-0">
-                            <li class="team-member team-member-sm"><img class="rounded-circle"
-                                src="assets/img/users/user-9.png" alt="user" data-toggle="tooltip" title=""
-                                data-original-title="Wildan Ahdian"></li>
-                            <li class="team-member team-member-sm"><img class="rounded-circle"
-                                src="assets/img/users/user-10.png" alt="user" data-toggle="tooltip" title=""
-                                data-original-title="John Deo"></li>
-                            <li class="team-member team-member-sm"><img class="rounded-circle"
-                                src="assets/img/users/user-2.png" alt="user" data-toggle="tooltip" title=""
-                                data-original-title="Sarah Smith"></li>
-                            <li class="avatar avatar-sm"><span class="badge badge-primary">+2</span></li>
-                          </ul>
-                        </td>
-                        <td class="align-middle">
-                          <div class="progress-text">45%</div>
-                          <div class="progress" data-height="6">
-                            <div class="progress-bar bg-cyan" data-width="45%"></div>
-                          </div>
-                        </td>
-                        <td>2017-02-24</td>
-                        <td>2018-09-06</td>
-                        <td>
-                          <div class="badge badge-danger">High</div>
-                        </td>
-                        <td><a href="#" class="btn btn-outline-primary">Detail</a></td>
-                      </tr>
-                      <tr>
-                        <td class="p-0 text-center">
-                          <div class="custom-checkbox custom-control">
-                            <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
-                              id="checkbox-6">
-                            <label for="checkbox-6" class="custom-control-label">&nbsp;</label>
-                          </div>
-                        </td>
-                        <td>Collect the feedbacks from owners and customers</td>
-                        <td class="text-truncate">
-                          <ul class="list-unstyled order-list m-b-0 m-b-0">
-                            <li class="team-member team-member-sm"><img class="rounded-circle"
-                                src="assets/img/users/user-8.png" alt="user" data-toggle="tooltip" title=""
-                                data-original-title="Wildan Ahdian"></li>
-                            <li class="team-member team-member-sm"><img class="rounded-circle"
-                                src="assets/img/users/user-9.png" alt="user" data-toggle="tooltip" title=""
-                                data-original-title="John Deo"></li>
-                            <li class="team-member team-member-sm"><img class="rounded-circle"
-                                src="assets/img/users/user-10.png" alt="user" data-toggle="tooltip" title=""
-                                data-original-title="Sarah Smith"></li>
-                            <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
-                          </ul>
-                        </td>
-                        <td class="align-middle">
-                          <div class="progress-text">30%</div>
-                          <div class="progress" data-height="6">
-                            <div class="progress-bar bg-orange" data-width="30%"></div>
-                          </div>
-                        </td>
-                        <td>2018-01-20</td>
-                        <td>2019-05-28</td>
-                        <td>
-                          <div class="badge badge-info">Average</div>
-                        </td>
-                        <td><a href="#" class="btn btn-outline-primary">Detail</a></td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- end assign table -->
-
-
-          <div class="row">
-            <div class="col-md-6 col-lg-12 col-xl-6">
-              <!-- Support tickets -->
-              <div class="card">
-                <div class="card-header">
-                  <h4>Support Ticket</h4>
-                  <form class="card-header-form">
-                    <input type="text" name="search" class="form-control" placeholder="Search">
-                  </form>
-                </div>
-                <div class="card-body">
-                  <div class="support-ticket media pb-1 mb-3">
-                    <img src="assets/img/users/user-1.png" class="user-img mr-2" alt="">
-                    <div class="media-body ml-3">
-                      <div class="badge badge-pill badge-success mb-1 float-right">Feature</div>
-                      <span class="font-weight-bold">#89754</span>
-                      <a href="javascript:void(0)">Please add new boardinng house</a>
-                      <p class="my-1">Hi, can you please add new boarding hou...</p>
-                      <small class="text-muted">Created by <span class="font-weight-bold font-13">John
-                          Deo</span>
-                        &nbsp;&nbsp; - 1 day ago</small>
-                    </div>
-                  </div>
-                  <div class="support-ticket media pb-1 mb-3">
-                    <img src="assets/img/users/user-2.png" class="user-img mr-2" alt="">
-                    <div class="media-body ml-3">
-                      <div class="badge badge-pill badge-warning mb-1 float-right">Bug</div>
-                      <span class="font-weight-bold">#57854</span>
-                      <a href="javascript:void(0)">Select item not working</a>
-                      <p class="my-1">please check select item in advance form not work...</p>
-                      <small class="text-muted">Created by <span class="font-weight-bold font-13">Sarah
-                          Smith</span>
-                        &nbsp;&nbsp; - 2 day ago</small>
-                    </div>
-                  </div>
-                  <div class="support-ticket media pb-1 mb-3">
-                    <img src="assets/img/users/user-3.png" class="user-img mr-2" alt="">
-                    <div class="media-body ml-3">
-                      <div class="badge badge-pill badge-primary mb-1 float-right">Query</div>
-                      <span class="font-weight-bold">#85784</span>
-                      <a href="javascript:void(0)">Are you provide photos of rooms</a>
-                      <p class="my-1">can you provide photos...</p>
-                      <small class="text-muted">Created by <span class="font-weight-bold font-13">Ashton Cox</span>
-                        &nbsp;&nbsp; -2 day ago</small>
-                    </div>
-                  </div>
-                  <div class="support-ticket media pb-1 mb-3">
-                    <img src="assets/img/users/user-6.png" class="user-img mr-2" alt="">
-                    <div class="media-body ml-3">
-                      <div class="badge badge-pill badge-info mb-1 float-right">Enhancement</div>
-                      <span class="font-weight-bold">#25874</span>
-                      <a href="javascript:void(0)">About template page load speed</a>
-                      <p class="my-1">Hi, John, can you work on increase page speed of...</p>
-                      <small class="text-muted">Created by <span class="font-weight-bold font-13">Hasan
-                          Basri</span>
-                        &nbsp;&nbsp; -3 day ago</small>
-                    </div>
-                  </div>
-                </div>
-                <a href="javascript:void(0)" class="card-footer card-link text-center small ">View
-                  All</a>
-              </div>
-              <!-- Support tickets -->
-            </div>
-
-
-            <div class="col-md-6 col-lg-12 col-xl-6">
-              <div class="card">
-                <div class="card-header">
-                  <h4>Booking Payments</h4>
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table table-hover mb-0">
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>Client Name</th>
-                          <th>Date</th>
-                          <th>Payment Method</th>
-                          <th>Amount</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-
-
-                        <?php
-
-    while($row = mysqli_fetch_assoc($result_show_emp))
-     {
-?> 
-<td><?php echo $row['id']; ?></td>
-<td><?php echo $row['owner_name']; ?></td>
-<td><?php echo $row['boarding_address']; ?></td>
-<td><?php echo $row['gender']; ?></td>
-<td><?php echo $row['students_count']; ?></td>
-<td><?php echo $row['price']; ?></td>
-<td><?php echo $row['contact_number']; ?></td>
-
-     </tr>
-<?php
-
-    }
-
-    ?>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+          
         
         <!--start setting bar -->
         <div class="settingSidebar">

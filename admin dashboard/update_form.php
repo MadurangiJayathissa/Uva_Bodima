@@ -3,11 +3,11 @@
 <html>
 
 <head>
+  <link rel="stylesheet" href="up_style.css" />
   <title>Update Boarding Details</title>
 </head>
 
 <body>
-  <h1>Update Boarding Details</h1>
 
   <?php
   // Check if the 'id' parameter is present in the URL

@@ -1,25 +1,39 @@
 <?php
-include "config.php";
+$host = 'localhost';
+$username = 'root';
+$password = '';
+$database = 'user_db';
 
+// Create connection
+$conn = mysqli_connect('localhost','root', '','user_db');
 
-$query_show_emp= "select * from save_table ";
-$result_show_emp= mysqli_query($conn, $query_show_emp);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 
+// Query to retrieve records from the save_table
+$query_show_emp = "SELECT * FROM save_table";
+$result_show_emp = mysqli_query($conn, $query_show_emp);
 
-
+// Check if the query was successful
+if (!$result_show_emp) {
+    die("Query failed: " . mysqli_error($conn));
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>Uva Bodima.lk</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="img/logo.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,7 +52,7 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style4.css" rel="stylesheet">
 </head>
 
 <body>
@@ -59,26 +73,13 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Property</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                <a href="property-list.html" class="dropdown-item">Property List</a>
-                                <a href="property-type.html" class="dropdown-item">Property Type</a>
-                                <a href="property-agent.html" class="dropdown-item">Property Agent</a>
-                            </div>
-                        </div>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                <a href="404.html" class="dropdown-item">404 Error</a>
-                            </div>
-                        </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="#home" class="nav-item nav-link active">Home</a>
+                        <a href="#about" class="nav-item nav-link">About</a>
+                        <a href="#boarding" class="nav-item nav-link">Boarding</a>
+                        <a href="#contact" class="nav-item nav-link">Contact</a>
                     </div>
                     <a href="form.php" class="btn btn-primary px-3 d-none d-lg-flex">Add Property</a>
+                    <a href="profile.php" class="nav-item nav-link"><i class="bi bi-person-circle"></i></a>
                 </div>
             </nav>
         </div>
@@ -86,21 +87,20 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
 
 
         <!-- Header Start -->
-        <div class="container-fluid header bg-white p-0">
+        <div class="container-fluid header bg-white p-5">
             <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
                 <div class="col-md-6 p-5 mt-lg-5">
                     <h1 class="display-5 animated fadeIn mb-4">Find A <span class="text-primary"></span> To Live With Your Friends.</h1>
-                    <p class="animated fadeIn mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet
-                        sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
+                    <p class="animated fadeIn mb-4 pb-2">Discover stress-free living with our Boarding House Rental System! 🏠✨ Explore a variety of housing options, simplify the renting process with easy navigation, and enjoy flexible leasing. Our secure platform ensures safe transactions, while mobile accessibility lets you find your dream space on the go. Join a supportive community and redefine hassle-free renting with us! 🚀🏡</p>
                     <a href="" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Get Started</a>
                 </div>
                 <div class="col-md-6 animated fadeIn">
                     <div class="owl-carousel header-carousel">
                         <div class="owl-carousel-item">
-                            <img class="img-fluid" src="img/h1.jpg" alt="">
+                            <img class="img-fluid" style="max-height: 500px;" src="img/home1.jpg" alt="">
                         </div>
                         <div class="owl-carousel-item">
-                            <img class="img-fluid" src="img/home2.jpg" alt="">
+                            <img class="img-fluid" style="max-height: 500px;" src="img/home1.jpg" alt="">
                         </div>
                     </div>
                 </div>
@@ -109,160 +109,21 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
         <!-- Header End -->
 
 
-        <!-- Search Start -->
-        <div class="container-fluid bg-primary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
-            <div class="container">
-                <div class="row g-2">
-                    <div class="col-md-10">
-                        <div class="row g-2">
-                            <div class="col-md-4">
-                                <input type="text" class="form-control border-0 py-3" placeholder="Search Keyword">
-                            </div>
-                            <div class="col-md-4">
-                                <select class="form-select border-0 py-3">
-                                    <option selected>Property Type</option>
-                                    <option value="1">Property Type 1</option>
-                                    <option value="2">Property Type 2</option>
-                                    <option value="3">Property Type 3</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <select class="form-select border-0 py-3">
-                                    <option selected>Location</option>
-                                    <option value="1">Location 1</option>
-                                    <option value="2">Location 2</option>
-                                    <option value="3">Location 3</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <button class="btn btn-dark border-0 w-100 py-3">Search</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Search End -->
-
-
-        <!-- Category Start 
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                    <h1 class="mb-3">Property Types</h1>
-                    <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
-                </div>
-                <div class="row g-4">
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <a class="cat-item d-block bg-light text-center rounded p-3" href="">
-                            <div class="rounded p-4">
-                                <div class="icon mb-3">
-                                    <img class="img-fluid" src="img/icon-apartment.png" alt="Icon">
-                                </div>
-                                <h6>Apartment</h6>
-                                <span>123 Properties</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <a class="cat-item d-block bg-light text-center rounded p-3" href="">
-                            <div class="rounded p-4">
-                                <div class="icon mb-3">
-                                    <img class="img-fluid" src="img/icon-villa.png" alt="Icon">
-                                </div>
-                                <h6>Villa</h6>
-                                <span>123 Properties</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <a class="cat-item d-block bg-light text-center rounded p-3" href="">
-                            <div class="rounded p-4">
-                                <div class="icon mb-3">
-                                    <img class="img-fluid" src="img/icon-house.png" alt="Icon">
-                                </div>
-                                <h6>Home</h6>
-                                <span>123 Properties</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                        <a class="cat-item d-block bg-light text-center rounded p-3" href="">
-                            <div class="rounded p-4">
-                                <div class="icon mb-3">
-                                    <img class="img-fluid" src="img/icon-housing.png" alt="Icon">
-                                </div>
-                                <h6>Office</h6>
-                                <span>123 Properties</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <a class="cat-item d-block bg-light text-center rounded p-3" href="">
-                            <div class="rounded p-4">
-                                <div class="icon mb-3">
-                                    <img class="img-fluid" src="img/icon-building.png" alt="Icon">
-                                </div>
-                                <h6>Building</h6>
-                                <span>123 Properties</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <a class="cat-item d-block bg-light text-center rounded p-3" href="">
-                            <div class="rounded p-4">
-                                <div class="icon mb-3">
-                                    <img class="img-fluid" src="img/icon-neighborhood.png" alt="Icon">
-                                </div>
-                                <h6>Townhouse</h6>
-                                <span>123 Properties</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <a class="cat-item d-block bg-light text-center rounded p-3" href="">
-                            <div class="rounded p-4">
-                                <div class="icon mb-3">
-                                    <img class="img-fluid" src="img/icon-condominium.png" alt="Icon">
-                                </div>
-                                <h6>Shop</h6>
-                                <span>123 Properties</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                        <a class="cat-item d-block bg-light text-center rounded p-3" href="">
-                            <div class="rounded p-4">
-                                <div class="icon mb-3">
-                                    <img class="img-fluid" src="img/icon-luxury.png" alt="Icon">
-                                </div>
-                                <h6>Garage</h6>
-                                <span>123 Properties</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-         Category End -->
-
-
         <!-- About Start -->
-        <div class="container-xxl py-5">
+        <div class="container-xxl py-5" id="about">
             <div class="container">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                         <div class="about-img position-relative overflow-hidden p-5 pe-0">
-                            <img class="img-fluid w-100" src="img/11.jpg">
+                            <img class="img-fluid w-100" style="max-height: 400px;" src="img/11.jpg">
                         </div>
                     </div>
                     <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                         <h1 class="mb-4">#1 Place To Find The Perfect Boarding House </h1>
-                        <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                        <p><i class="fa fa-check text-primary me-3"></i>Tempor erat elitr rebum at clita</p>
-                        <p><i class="fa fa-check text-primary me-3"></i>Aliqu diam amet diam et eos</p>
-                        <p><i class="fa fa-check text-primary me-3"></i>Clita duo justo magna dolore erat amet</p>
-                        <a class="btn btn-primary py-3 px-5 mt-3" href="">Read More</a>
+                        <p class="mb-4">Firstly, You can search for available boarding options based on preferences and your choice, such as location, pet accommodations,packages and amenities.After you found a suitable boarding , You can confirm it by checking facility details, prices, feedbacks from old customers and images that are provided by boarding owners.You may need to contact the boarding owner for get any additional information, special requests related to their stay. This allows clear communication between the owner and the us.</p>
+                        <p><i class="fa fa-check text-primary me-3"></i>Search Boarding House</p>
+                        <p><i class="fa fa-check text-primary me-3"></i>Choose your Boarding House</p>
+                        <p><i class="fa fa-check text-primary me-3"></i>Contact Boarding Owner</p>
                     </div>
                 </div>
             </div>
@@ -271,13 +132,13 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
 
 
         <!-- Property List Start -->
-        <div class="container-xxl py-5">
+        <div class="container-xxl py-5" id="boarding">
             <div class="container">
                 <div class="row g-0 gx-5 align-items-end">
                     <div class="col-lg-6">
                         <div class="text-start mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
-                            <h1 class="mb-3">Property Listing</h1>
-                            <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit diam justo sed rebum.</p>
+                            <h1 class="mb-3">Boarding Listing</h1>
+                            <p>Start your boarding adventure now – where comfort meets community and every stay is a chapter in your personal journey. 🏡✨</p>
                         </div>
                     </div>
                     <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
@@ -298,45 +159,46 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
                 <div class="tab-content">
                     
                     <div class="container">
-    <?php
-    $select_products = mysqli_query($conn, "SELECT * FROM `save_table`");
-    $cardCount = 0;
+                        <?php
+                        $select_products = mysqli_query($conn, "SELECT * FROM `save_table`");
+                        $cardCount = 0;
 
-    if (mysqli_num_rows($select_products) > 0) {
-        echo '<div class="row">'; // Start the first row
-        while ($row = mysqli_fetch_assoc($select_products)) {
-            if ($cardCount % 4 == 0 && $cardCount > 0) {
-                // Start a new row for every 4 cards
-                echo '</div><div class="row">';
-            }
+                        if (mysqli_num_rows($select_products) > 0) {
+                            echo '<div class="row">'; // Start the first row
+                            while ($row = mysqli_fetch_assoc($select_products)) {
+                                if ($cardCount % 4 == 0 && $cardCount > 0) {
+                                    // Start a new row for every 4 cards
+                                    echo '</div><div class="row">';
+                                }
 
-            echo '<div class="col-md-3">'; // Create a column for each card
-            echo '<div class="property-item rounded overflow-hidden">';
-            echo '<div class="position-relative overflow-hidden">';
-            echo '<img class="img-fluid" src="../home/uploaded_img/' . $row['boardingPictures'] . '" height="50" alt="">';
-            echo '<div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">' . $row['gender'] . '</div>';
-            echo '</div>';
-            echo '<div class="p-4 pb-0">';
-            echo '<h5 class="text-primary mb-3">' . $row['price'] . '</h5>';
-            echo '<a class="d-block h5 mb-2" href="">' . $row['owner_name'] . '</a>';
-            echo '<p><i class="fa fa-map-marker-alt text-primary me-2"></i>' . $row['boarding_address'] . '</p>';
-            echo '<p><i class="fas fa-users text-primary me-2"></i>' . $row['students_count'] . '</p>';
-            echo '<p><i class="fas fa-phone text-primary me-2"></i>' . $row['contact_number'] . '</p>';
-            echo '</div>';
-            echo '</div>';
-            echo '</div>';
-            $cardCount++;
-        }
-        echo '</div>'; // Close the last row
-    } else {
-        echo "<div class='empty'>no product added</div>";
-    }
-    ?>
-</div>
+                                echo '<div class="col-md-3">'; // Create a column for each card
+                                echo '<div class="property-item rounded overflow-hidden">';
+                                echo '<div class="position-relative overflow-hidden">';
+                                echo '<img class="img-fluid" src="../home/uploaded_img/' . $row['boardingPictures'] . '" height="400px" width="300px" alt="">';
+                                echo '<div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">' . $row['gender'] . '</div>';
+                                echo '</div>';
+                                echo '<div class="p-4 pb-0">';
+                                echo '<h5 class="text-primary mb-3"> Rs.' . $row['price'] . '</h5>';
+                                echo '<a class="d-block h5 mb-2" href="">' . $row['owner_name'] . '</a>';
+                                echo '<p><i class="fa fa-map-marker-alt text-primary me-2"></i>' . $row['boarding_address'] . '</p>';
+                                echo '<p><i class="fas fa-users text-primary me-2"></i>' . $row['students_count'] . '</p>';
+                                echo '<p><i class="fas fa-phone text-primary me-2"></i>' . $row['contact_number'] . '</p>';
+                                echo '</div>';
+                                echo '<div class="text-center mb-3">';
+                                echo '<button type="button" class="btn btn-info" onclick="window.location.href=\'more.php?id=' . $row['id'] . '\'">More Info</button>';
+                                echo '</div>';
+                                echo '</div>';
+                                echo '</div>';
+                                $cardCount++;
+                            }
+                            echo '</div>'; // Close the last row
+                        } else {
+                            echo "<div class='empty'>no product added</div>";
+                        }
+                        ?>
+            </div>
 
-                            <div class="col-12 text-center">
-                                <a class="btn btn-primary py-3 px-5" href="">Browse More Property</a>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -346,21 +208,20 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
 
 
         <!-- Call to Action Start -->
-        <div class="container-xxl py-5">
+        <div class="container-xxl py-5" id="contact">
             <div class="container">
                 <div class="bg-light rounded p-3">
                     <div class="bg-white rounded p-4" style="border: 1px dashed rgba(0, 185, 142, .3)">
                         <div class="row g-5 align-items-center">
                             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                                <img class="img-fluid rounded w-100" src="img/call-to-action.jpg" alt="">
+                                <img class="img-fluid rounded w-100" style="max-height: 400px;" src="img/call-to-action.jpg" alt="">
                             </div>
                             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                                 <div class="mb-4">
-                                    <h1 class="mb-3">Contact With Our Certified Agent</h1>
-                                    <p>Eirmod sed ipsum dolor sit rebum magna erat. Tempor lorem kasd vero ipsum sit sit diam justo sed vero dolor duo.</p>
+                                    <h1 class="mb-3">Contact With Our Admin</h1>
+                                    <p>Our dedicated admin team is here to assist you with any questions or concerns you may have. We value your feedback and are committed to ensuring a seamless experience for you. Feel free to connect with us, and we'll be more than happy to help. 🤝 </p>
                                 </div>
-                                <a href="" class="btn btn-primary py-3 px-4 me-2"><i class="fa fa-phone-alt me-2"></i>Make A Call</a>
-                                <a href="" class="btn btn-dark py-3 px-4"><i class="fa fa-calendar-alt me-2"></i>Get Appoinment</a>
+                                <a href="contact.php" class="btn btn-primary py-3 px-4 me-2"><i class="fa fa-message-alt me-2"></i>Put A Message</a>
                             </div>
                         </div>
                     </div>
@@ -375,13 +236,13 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
             <div class="container">
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                     <h1 class="mb-3">Property Agents</h1>
-                    <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
+                    <p>Managing the bits and bytes for a pixel-perfect experience. 🧑‍💻✨</p>
                 </div>
                 <div class="row g-4">
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-item rounded overflow-hidden">
                             <div class="position-relative">
-                                <img class="img-fluid" src="img/team-1.jpg" alt="">
+                                <img class="img-fluid" style="max-height: 400px;" src="img/team-1.jpg" alt="">
                                 <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
                                     <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
                                     <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
@@ -397,7 +258,7 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="team-item rounded overflow-hidden">
                             <div class="position-relative">
-                                <img class="img-fluid" src="img/team-2.jpg" alt="">
+                                <img class="img-fluid" style="max-height: 400px;" src="img/team-2.jpg" alt="">
                                 <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
                                     <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
                                     <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
@@ -413,7 +274,7 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="team-item rounded overflow-hidden">
                             <div class="position-relative">
-                                <img class="img-fluid" src="img/team-3.jpg" alt="">
+                                <img class="img-fluid" style="max-height: 400px;" src="img/team-3.jpg" alt="">
                                 <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
                                     <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
                                     <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
@@ -429,7 +290,7 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
                         <div class="team-item rounded overflow-hidden">
                             <div class="position-relative">
-                                <img class="img-fluid" src="img/team-4.jpg" alt="">
+                                <img class="img-fluid" style="max-height: 400px;" src="img/team-4.jpg" alt="">
                                 <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
                                     <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
                                     <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
@@ -453,12 +314,12 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
             <div class="container">
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                     <h1 class="mb-3">Our Clients Say!</h1>
-                    <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
+                    <p>Uncover a world of comfort and convenience with our exceptional website – where every click leads you to the perfect boarding house. Elevate your living experience effortlessly.  🏡 Seamless, stress-free, and personalized – this boarding house search website is your key to hassle-free living. ✨</p>
                 </div>
                 <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
                     <div class="testimonial-item bg-light rounded p-3">
                         <div class="bg-white border rounded p-4">
-                            <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
+                            <p>Absolutely thrilled with this boarding house search website! Found a cozy place within minutes, thanks to the intuitive interface and comprehensive listings. A game-changer for anyone in search of hassle-free accommodation.</p>
                             <div class="d-flex align-items-center">
                                 <img class="img-fluid flex-shrink-0 rounded" src="img/testimonial-1.jpg" style="width: 45px; height: 45px;">
                                 <div class="ps-3">
@@ -470,7 +331,7 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
                     </div>
                     <div class="testimonial-item bg-light rounded p-3">
                         <div class="bg-white border rounded p-4">
-                            <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
+                            <p>Kudos to this site for making my boarding house hunt stress-free. This website is a lifesaver, and the detailed descriptions gave me a clear picture of what to expect. A top-notch platform that exceeded my expectations!</p>
                             <div class="d-flex align-items-center">
                                 <img class="img-fluid flex-shrink-0 rounded" src="img/testimonial-2.jpg" style="width: 45px; height: 45px;">
                                 <div class="ps-3">
@@ -482,7 +343,7 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
                     </div>
                     <div class="testimonial-item bg-light rounded p-3">
                         <div class="bg-white border rounded p-4">
-                            <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
+                            <p>Incredibly impressed with the efficiency of this boarding house search website. It not only saved me time but also connected me with a perfect living space. The user-friendly design and responsive support make it a standout in the crowded online housing market.</p>
                             <div class="d-flex align-items-center">
                                 <img class="img-fluid flex-shrink-0 rounded" src="img/testimonial-3.jpg" style="width: 45px; height: 45px;">
                                 <div class="ps-3">
@@ -516,11 +377,10 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h5 class="text-white mb-4">Quick Links</h5>
+                        <a class="btn btn-link text-white-50" href="">Home</a>
                         <a class="btn btn-link text-white-50" href="">About Us</a>
                         <a class="btn btn-link text-white-50" href="">Contact Us</a>
-                        <a class="btn btn-link text-white-50" href="">Our Services</a>
-                        <a class="btn btn-link text-white-50" href="">Privacy Policy</a>
-                        <a class="btn btn-link text-white-50" href="">Terms & Condition</a>
+                        <a class="btn btn-link text-white-50" href="">Boarding</a>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h5 class="text-white mb-4">Photo Gallery</h5>

@@ -26,7 +26,10 @@
             align-items: center;
             justify-content: center;
             font-family: 'Heebo', sans-serif;
-            background: #00B98E;
+            background: url(uploaded_img/1.jpg);
+            background-size: cover; /* Ensures the background image covers the entire viewport */
+            background-position: center; /* Centers the background image */
+            backdrop-filter: blur(10px); /* Adjust the blur value as needed */
         }
 
         .container {
@@ -100,12 +103,33 @@
                 </select>
             </div>
             <div class="form-group">
+                <label for="Home_Types">Home Types:</label>
+                <select id="Home_Types" name="Home_Types" required>
+                    <option value="">Select</option>
+                    <option value="Anex">Anex</option>
+                    <option value="Home">Home</option>
+                    <option value="Lease">Lease</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Bathroom_Types">Bathroom Types:</label>
+                <select id="Bathroom_Types" name="Bathroom_Types" required>
+                    <option value="">Select</option>
+                    <option value="Attached">Attached</option>
+                    <option value="Non-attached">Non-attached</option>
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="students-count">Number of Students:</label>
                 <input type="number" id="students-count" name="studentsCount" required>
             </div>
             <div class="form-group">
-                <label for="price">Price:</label>
+                <label for="price">Monthley Free:</label>
                 <input type="number" id="price" name="price" required>
+            </div>
+            <div class="form-group">
+                <label for="K_price">Key Money:</label>
+                <input type="number" id="K_price" name="K_price" required>
             </div>
             <div class="form-group">
                 <label for="contact-number">Contact Number:</label>

@@ -3,13 +3,14 @@
 
 <head>
     <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>Uva Boadima.lk</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="img/icon-deal.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -64,7 +65,7 @@
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
             <a href="" class="navbar-brand p-0">
-                <h1 class="text-primary m-0"><i class="fa fa-map-marker-alt me-3"></i>Uva Bodima.lk</h1>
+                <h2 class="text-primary m-0"><img src="img/icon-deal.png" alt="icon"> UvaBodima.lk</h2>
                 <!-- <img src="img/logo.png" alt="Logo"> -->
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -72,27 +73,18 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="about.html" class="nav-item nav-link">About</a>
-                    <a href="service.html" class="nav-item nav-link">Services</a>
-                    <a href="package.html" class="nav-item nav-link">Packages</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu m-0">
-                            <a href="destination.html" class="dropdown-item">Destination</a>
-                            <a href="booking.html" class="dropdown-item">Contact Us</a>
-                            <a href="team.html" class="dropdown-item">Our Guides</a>
-                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                            <a href="404.html" class="dropdown-item">404 Page</a>
-                        </div>
-                    </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    <a href="#home" class="nav-item nav-link active">Home</a>
+                    <a href="#about" class="nav-item nav-link">About</a>
+                    <a href="#service" class="nav-item nav-link">Services</a>
+                    <a href="#destination" class="nav-item nav-link">Destination</a>
+                    <a href="#package" class="nav-item nav-link">Package</a>
+                    <a href="#contact" class="nav-item nav-link">Contact</a>
                 </div>
                 <a href="../loging/index.php" class="btn btn-primary rounded-pill py-2 px-4">Loging</a>
             </div>
         </nav>
 
-        <div class="container-fluid bg-primary py-5 mb-5 hero-header">
+        <div class="container-fluid bg-primary py-5 mb-5 hero-header" id="home">
             <div class="container py-5">
                 <div class="row justify-content-center py-5">
                     <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
@@ -111,7 +103,7 @@
 
 
     <!-- About Start -->
-    <div class="container-xxl py-5">
+    <div id="about" class="container-xxl py-5">
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
@@ -122,17 +114,11 @@
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
                     <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
                     <h1 class="mb-4">Welcome to <span class="text-primary">Uva Bodima.lk</span></h1>
-                    <p class="mb-4"><center>
+                    <p class="mb-4" style="text-align:justify">
 
-Here at Uva Bodima.lk, we recognize that a comfortable and conducive living environment is crucial for the success and well-being of university students. Our About page provides you with insight into our mission, values, and the unique offerings we bring to the table.
-we're dedicated to crafting a home away from home for university students. We understand that your living space plays a pivotal role in your academic journey, and our mission is to provide safe, convenient, and vibrant residential facilities that foster learning, growth, and a sense of community.
- We believe in open communication and honesty. Our listings provide accurate details about each residence, ensuring you have the information you need to make informed decisions.</p>
-<br> 
-Our on-site staff is ready to assist you with any questions or concerns you may have. From move-in to move-out, we're here to ensure your experience is smooth and enjoyable.
- We organize events and activities that encourage interaction among residents. From study groups to social gatherings, we believe in fostering a strong sense of belonging.
-We know that student budgets can be tight. Our pricing models are designed to be reasonable, providing value for your investment.
-<br>
-<p class="mb-4">Thank you for considering Uva Bodima.lkfor your university accommodation needs. We invite you to explore our listings, learn more about our facilities, and envision the comfortable and enriching student life that awaits you here. Welcome to your home away from home!</p></center> 
+                        Here at Uva Bodima.lk, we recognize that a comfortable and conducive living environment is crucial for the success and well-being of university students. Our About page provides you with insight into our mission, values, and the unique offerings we bring to the table.
+                        we're dedicated to crafting a home away from home for university students. We understand that your living space plays a pivotal role in your academic journey, and our mission is to provide safe, convenient, and vibrant residential facilities that foster learning, growth, and a sense of community.
+                        We believe in open communication and honesty. Our listings provide accurate details about each residence, ensuring you have the information you need to make informed decisions.</p>
                    
                 </div>
             </div>
@@ -142,7 +128,7 @@ We know that student budgets can be tight. Our pricing models are designed to be
 
 
     <!-- Service Start -->
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5" id="service">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="section-title bg-white text-center text-primary px-3">Services</h6>
@@ -155,6 +141,10 @@ We know that student budgets can be tight. Our pricing models are designed to be
                         <center> <i class="fa fa-3x fa-car text-primary mb-4"></i>
                             <h5>Contact Taxi Services</h5>
                             <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p></center>
+                            <div class="d-flex justify-content-center mb-2">
+                                <a href="taxi.html" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
+                                <a href="taxi.html" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Contact details</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -164,6 +154,10 @@ We know that student budgets can be tight. Our pricing models are designed to be
                         <center> <i class="fa fa-3x fa-coffee text-primary mb-4"></i>
                             <h5>Contact Food Resturant </h5>
                             <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p></center>
+                            <div class="d-flex justify-content-center mb-2">
+                                <a href="hotel.html" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
+                                <a href="hotel.html" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Contact details</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -173,6 +167,10 @@ We know that student budgets can be tight. Our pricing models are designed to be
                         <center><i class="fa fa-3x fa-medkit text-primary mb-4"></i>
                             <h5>Contact Medical Home </h5>
                             <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p></center>
+                            <div class="d-flex justify-content-center mb-2">
+                                <a href="medi.html" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
+                                <a href="medi.html" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Contact details</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -182,6 +180,10 @@ We know that student budgets can be tight. Our pricing models are designed to be
                             <center><i class="fa fa-3x  fa-home text-primary mb-4"></i>
                             <h5>Contact Salon Home</h5>
                             <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p></center>
+                            <div class="d-flex justify-content-center mb-2">
+                                <a href="salon.html" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
+                                <a href="salon.html" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Contact details</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -192,7 +194,7 @@ We know that student budgets can be tight. Our pricing models are designed to be
 
 
     <!-- Destination Start -->
-    <div class="container-xxl py-5 destination">
+    <div class="container-xxl py-5 destination" id="destination">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="section-title bg-white text-center text-primary px-3">Destination</h6>
@@ -248,7 +250,7 @@ We know that student budgets can be tight. Our pricing models are designed to be
 
 
     <!-- Package Start -->
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5" id="package">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="section-title bg-white text-center text-primary px-3">Packages</h6>
@@ -275,10 +277,7 @@ We know that student budgets can be tight. Our pricing models are designed to be
                                 <small class="fa fa-star text-primary"></small>
                             </div>
                             <p>3 Bedrooms, 2 Bathrooms, a kitchen and a study area, Near to the uva wellassa university,Situated in Jayagama junction, Passara road, Badulla.</p>
-                            <div class="d-flex justify-content-center mb-2">
-                                <a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
-                                <a href="#" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Book Now</a>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -302,10 +301,7 @@ We know that student budgets can be tight. Our pricing models are designed to be
                                 <small class="fa fa-star text-primary"></small>
                             </div>
                             <p>3 Bedrooms, 2 Bathrooms, a kitchen and a study area, Near to the uva wellassa university,Situated in Rambukpotha road, Passara road, Badulla.</p>
-                            <div class="d-flex justify-content-center mb-2">
-                                <a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
-                                <a href="#" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Book Now</a>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -329,10 +325,7 @@ We know that student budgets can be tight. Our pricing models are designed to be
                                 <small class="fa fa-star text-primary"></small>
                             </div>
                             <p>1 Bedrooms, 1 Bathrooms and a study area, Near to the uva wellassa university,Situated in Vinithagama junction, Passara road, Badulla.</p>
-                            <div class="d-flex justify-content-center mb-2">
-                                <a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
-                                <a href="#" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Book Now</a>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -342,7 +335,7 @@ We know that student budgets can be tight. Our pricing models are designed to be
     <!-- Package End -->
 
     <!-- Booking Start -->
-    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s" id="contact">
         <div class="container">
             <div class="booking p-5">
                 <div class="row g-5 align-items-center">
@@ -353,39 +346,35 @@ We know that student budgets can be tight. Our pricing models are designed to be
                     </div>
                     <div class="col-md-6">
                         
-                        <form>
+                        <form onsubmit="sendEmail(); reset(); return false;">
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control bg-transparent" id="name" placeholder="Your Name">
+                                        <input type="text" class="form-control bg-transparent" id="name" placeholder="Your Name" required>
                                         <label for="name">Your Name</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control bg-transparent" id="email" placeholder="Your Email">
+                                        <input type="email" class="form-control bg-transparent" id="email" placeholder="Your Email" required>
                                         <label for="email">Your Email</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating date" id="date3" data-target-input="nearest">
-                                        <input type="text" class="form-control bg-transparent datetimepicker-input" id="datetime" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" />
+                                        <input type="text" class="form-control bg-transparent datetimepicker-input" id="datetime" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" required />
                                         <label for="datetime">Date & Time</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <select class="form-select bg-transparent" id="select1">
-                                            <option value="1">Destination 1</option>
-                                            <option value="2">Destination 2</option>
-                                            <option value="3">Destination 3</option>
-                                        </select>
-                                        <label for="select1">Destination</label>
+                                        <input type="address" class="form-control bg-transparent" id="address" placeholder="Your Address" required>
+                                        <label for="address">Your Address</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <textarea class="form-control bg-transparent" placeholder="Special Request" id="message" style="height: 100px"></textarea>
+                                        <textarea class="form-control bg-transparent" placeholder="Special Request" id="message" style="height: 100px" required></textarea>
                                         <label for="message">Special Request</label>
                                     </div>
                                 </div>
@@ -661,6 +650,26 @@ We know that student budgets can be tight. Our pricing models are designed to be
     <script src="lib/tempusdominus/js/moment.min.js"></script>
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail(){
+            Email.send({
+                Host : "smtp.elasticemail.com",
+                Username : "uvabodima15gen@gmail.com",
+                Password : "7130D6F4E05A2DE8E2F269A898676D17A5C9",
+                To : 'uvabodima15gen@gmail.com',
+                From : document.getElementById("email").value,
+                Subject : "New Contact Form Enquiry",
+                Body : "Name: " + document.getElementById("name").value
+                      + "<br> Email:" + document.getElementById("email").value
+                      + "<br> Date & Time:" + document.getElementById("datetime").value
+                      + "<br> Address:" + document.getElementById("address").value
+                      + "<br> Message:" + document.getElementById("message").value
+            }).then(
+            message => alert("messahe sent")
+            );
+        }
+    </script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>

@@ -22,7 +22,7 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
   <link rel="stylesheet" href="assets/css/components.css">
   <!-- Custom style CSS -->
   <link rel="stylesheet" href="assets/css/custom.css">
-  <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico' />
+  <link rel='shortcut icon' type='image/x-icon' href='assets/img/logo.png' />
 </head>
 
 <body>
@@ -51,132 +51,11 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
           </ul>
         </div>
         <ul class="navbar-nav navbar-right">
-          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
-              class="nav-link nav-link-lg message-toggle"><i data-feather="mail"></i>
-              <span class="badge headerBadge1">
-                6 </span> </a>
-            <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
-              <div class="dropdown-header">
-                Messages
-                <div class="float-right">
-                  <a href="#">Mark All As Read</a>
-                </div>
-              </div>
-              <div class="dropdown-list-content dropdown-list-message">
-                <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar
-											text-white"> <img alt="image" src="assets/img/users/user-1.png" class="rounded-circle">
-                  </span> <span class="dropdown-item-desc"> <span class="message-user">John
-                      Deo</span>
-                    <span class="time messege-text">Please check your mail !!</span>
-                    <span class="time">2 Min Ago</span>
-                  </span>
-                </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-2.png" class="rounded-circle">
-                  </span> <span class="dropdown-item-desc"> <span class="message-user">Sarah
-                      Smith</span> <span class="time messege-text">Request for leave
-                      application</span>
-                    <span class="time">5 Min Ago</span>
-                  </span>
-                </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-5.png" class="rounded-circle">
-                  </span> <span class="dropdown-item-desc"> <span class="message-user">Jacob
-                      Ryan</span> <span class="time messege-text">Your payment invoice is
-                      generated.</span> <span class="time">12 Min Ago</span>
-                  </span>
-                </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-4.png" class="rounded-circle">
-                  </span> <span class="dropdown-item-desc"> <span class="message-user">Lina
-                      Smith</span> <span class="time messege-text">hii John, I have upload
-                      doc
-                      related to task.</span> <span class="time">30
-                      Min Ago</span>
-                  </span>
-                </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-3.png" class="rounded-circle">
-                  </span> <span class="dropdown-item-desc"> <span class="message-user">Jalpa
-                      Joshi</span> <span class="time messege-text">Please do as specify.
-                      Let me
-                      know if you have any query.</span> <span class="time">1
-                      Days Ago</span>
-                  </span>
-                </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-2.png" class="rounded-circle">
-                  </span> <span class="dropdown-item-desc"> <span class="message-user">Sarah
-                      Smith</span> <span class="time messege-text">Client Requirements</span>
-                    <span class="time">2 Days Ago</span>
-                  </span>
-                </a>
-              </div>
-              <div class="dropdown-footer text-center">
-                <a href="#">View All <i class="fas fa-chevron-right"></i></a>
-              </div>
-            </div>
-          </li>
-          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
-              class="nav-link notification-toggle nav-link-lg"><i data-feather="bell" class="bell"></i>
-            </a>
-            <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
-              <div class="dropdown-header">
-                Notifications
-                <div class="float-right">
-                  <a href="#">Mark All As Read</a>
-                </div>
-              </div>
-              <div class="dropdown-list-content dropdown-list-icons">
-                <a href="#" class="dropdown-item dropdown-item-unread"> <span
-                    class="dropdown-item-icon bg-primary text-white"> <i class="fas
-												fa-code"></i>
-                  </span> <span class="dropdown-item-desc"> Template update is
-                    available now! <span class="time">2 Min
-                      Ago</span>
-                  </span>
-                </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-info text-white"> <i class="far
-												fa-user"></i>
-                  </span> <span class="dropdown-item-desc"> <b>You</b> and <b>Dedik
-                      Sugiharto</b> are now friends <span class="time">10 Hours
-                      Ago</span>
-                  </span>
-                </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-success text-white"> <i
-                      class="fas
-												fa-check"></i>
-                  </span> <span class="dropdown-item-desc"> <b>Kusnaedi</b> has
-                    moved task <b>Fix bug header</b> to <b>Done</b> <span class="time">12
-                      Hours
-                      Ago</span>
-                  </span>
-                </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-danger text-white"> <i
-                      class="fas fa-exclamation-triangle"></i>
-                  </span> <span class="dropdown-item-desc"> Low disk space. Let's
-                    clean it! <span class="time">17 Hours Ago</span>
-                  </span>
-                </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-info text-white"> <i class="fas
-												fa-bell"></i>
-                  </span> <span class="dropdown-item-desc"> Welcome to Otika
-                    template! <span class="time">Yesterday</span>
-                  </span>
-                </a>
-              </div>
-              <div class="dropdown-footer text-center">
-                <a href="#">View All <i class="fas fa-chevron-right"></i></a>
-              </div>
-            </div>
-          </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown"
               class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image" src="assets/img/user.png"
                 class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
               <div class="dropdown-title">Hello Sarah Smith</div>
-              <a href="profile.php" class="dropdown-item has-icon"> <i class="far
-										fa-user"></i> Profile
-              </a> <a href="timeline.php" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
-                Activities
-              </a> <a href="#" class="dropdown-item has-icon"> <i class="fas fa-cog"></i>
-                Settings
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="auth-login.php" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
-                Logout
-              </a>
             </div>
           </li>
         </ul>
@@ -186,31 +65,17 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
             <a href="index.php"> <img alt="image" src="assets/img/logo.png" class="header-logo" /> <span
-                class="logo-name">UVA-BODIMA.LK</span>
+                class="logo-name">UvaBodima.LK</span>
             </a>
           </div>
 
           <ul class="sidebar-menu">
             <li class="dropdown active">
               <a href="index.php" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="briefcase"></i><span>House Type</span></a>
-                  <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="widget-chart.php">Single rooms</a></li>
-                    <li><a class="nav-link" href="widget-data.php">Double rooms</a></li>
-                  </ul>
-                  <a href="details.php" class="nav-link"><i data-feather="monitor"></i><span>Boarding Details</span></a>
-
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="mail"></i><span>Email</span></a>
-                  <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="email-inbox.php">Inbox</a></li>
-                    <li><a class="nav-link" href="email-compose.php">Compose</a></li>
-                    <li><a class="nav-link" href="email-read.php">read</a></li>
-                  </ul>      
-              <a href="owners.php" class="menu-toggle nav-link has-dropdown"><i data-feather="copy"></i><span>Owners</span></a>        
-              <a href="payments.php" class="menu-toggle nav-link has-dropdown"><i data-feather="shopping-bag"></i><span>Payments</span></a> 
-              <a href="blank.php"    class="menu-toggle nav-link has-dropdown"><i data-feather="file"></i><span>Reports</span></a>
-              <a href="reports.php" class="menu-toggle nav-link has-dropdown"><i data-feather="layout"></i><span>Reports</span></a>
-              <a href="users.php" class="menu-toggle nav-link has-dropdown"><i data-feather="grid"></i><span>Users</span></a>
+              <a href="details.php" class="nav-link"><i data-feather="info"></i><span>Boarding Details</span></a>       
+              <a href="payments.php" class="nav-link"><i data-feather="dollar-sign"></i><span>Payments</span></a> 
+              <a href="message.php" class="nav-link"><i data-feather="message-circle"></i><span>Message</span></a>
+              <a href="user.php" class="nav-link"><i data-feather="users"></i><span>Users</span></a>
               
               </li>
               </ul>
@@ -250,8 +115,11 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
                           <th>Owner Name</th>
                           <th>Boarding Address</th>
                           <th>Girls or Boys</th>
+                          <th>Home Type</th>
+                          <th>Bathroom Type</th>
                           <th>Number of Students</th>
                           <th>Price</th>
+                          <th>Key Money</th>
                           <th>Contact Number</th>
                           <th>Boarding Pictures</th>
                           <th>Payment</th>
@@ -269,8 +137,11 @@ $result_show_emp= mysqli_query($conn, $query_show_emp);
                         <td><?php echo $row['owner_name']; ?></td>
                         <td><?php echo $row['boarding_address']; ?></td>
                         <td><?php echo $row['gender']; ?></td>
+                        <td><?php echo $row['home_types']; ?></td>
+                        <td><?php echo $row['bathroom_types']; ?></td>
                         <td><?php echo $row['students_count']; ?></td>
                         <td><?php echo $row['price']; ?></td>
+                        <td><?php echo $row['k_price']; ?></td>
                         <td><?php echo $row['contact_number']; ?></td>
                         <td><img src="../home/uploaded_img/<?php echo $row['boardingPictures']; ?>" height="100" alt=""></td>
                         <td><img src="../home/uploaded_img/<?php echo $row['payment']; ?>" height="100" alt=""></td>
