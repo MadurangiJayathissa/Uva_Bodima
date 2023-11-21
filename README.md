@@ -11,7 +11,9 @@ _Introducing Uva Bodima.lk: Elevate your boarding experience with our seamless w
 
 1. Download Zip Fille
 2. Add it in your Xammp htdoc file
-3. Run http://localhost:8080/Uva_Bodima/
+3. Create database name as 'user_db'
+4. Import localhost phpmyadmin to 'user_db.sql' file
+5. Run http://localhost:8080/Uva_Bodima/
 
 Add required package env keys to enable all the features
 
